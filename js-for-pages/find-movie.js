@@ -1,7 +1,7 @@
 import { encode } from '../utils.js'
 import { SERVER } from '../settings.js';
 
-let URL = SERVER + "api/movies"
+let URL = SERVER + "/api/movies"
 
 
 export function setupMovieHandlers(){
