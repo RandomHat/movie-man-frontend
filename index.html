@@ -22,9 +22,10 @@
       <div>
         <ul id="menu" class="menu">
           <li><a id="page-about" href="#">About</a></li>
+          <li><a id="page-movie-list" href="#">Movie List</a></li>
 
           <div id="not-logged-in" style="display: block">
-            <li><a id="page-sign-up" href="#">Sign up as user</a></li>
+            <li><a id="page-sign-up" href="#">Sign Up</a></li>
           </div>
           <div id="logged-in-user" style="display: none"></div>
           <li><a id="page-login" href="#">Login</a></li>
@@ -42,19 +43,32 @@
 
 <template data-id="page-sign-up">
   <h2>Sign up to Movie-Man</h2>
+  <form>
+    <input placeholder="User Name" id="username" />
+    <input type="password" placeholder="Password" id="password" />
+    <div style="margin-top: 1em">
+      <button id="btn-sign-up">Sign Up</button>
+    </div>
+  </form>
+</template>
+
+<template data-id="page-movie-list">
+  <h2>List of Movies</h2>
+  <form>
+    <input placeholder="Movie Name" id="movie-name" />
+    <button id="btn-movie-name">Search</button>
+  </form>
 </template>
 
 <template data-id="page-login">
-  <div style="margin: 150px">
-    <h2>Login</h2>
-    <form>
-      <input placeholder="User Name" id="username" />
-      <input type="password" placeholder="Password" id="password" />
-      <div style="margin-top: 1em">
-        <button id="btn-login" class="btn btn-primary">Login (test case for now)</button>
-      </div>
-    </form>
-  </div>
+  <h2>Login</h2>
+  <form>
+    <input placeholder="User Name" id="username" />
+    <input type="password" placeholder="Password" id="password" />
+    <div style="margin-top: 1em">
+      <button id="btn-login">Login (test case for now)</button>
+    </div>
+  </form>
 </template>
 
 <template data-id="page-logout"></template>
