@@ -1,1 +1,1 @@
-export const SERVER = 'https://movie-man.azurewebsites.net/'
+export const SERVER = 'https://movie-man.azurewebsites.net'
