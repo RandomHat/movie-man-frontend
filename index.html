@@ -22,7 +22,7 @@
       <div>
         <ul id="menu" class="menu">
           <li><a id="page-about" href="#">About</a></li>
-          <li><a id="page-movie-list" href="#">Movie List</a></li>
+          <li><a id="page-find-movie" href="#">Find Movie</a></li>
 
           <div id="not-logged-in" style="display: block">
             <li><a id="page-sign-up" href="#">Sign Up</a></li>
@@ -52,12 +52,28 @@
   </form>
 </template>
 
-<template data-id="page-movie-list">
+<template data-id="page-find-movie">
   <h2>List of Movies</h2>
   <form>
     <input placeholder="Movie Name" id="movie-name" />
     <button id="btn-movie-name">Search</button>
   </form>
+  <div class="row">
+    <div class="col-8">
+      <table class="table col-8">
+        <thead>
+          <tr>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Overview</th>
+            <th>Release Date</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody id="movie-detail-rows"></tbody>
+      </table>
+    </div>
+  </div>
 </template>
 
 <template data-id="page-login">
