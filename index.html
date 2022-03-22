@@ -60,6 +60,11 @@
   </form>
   <div class="row">
     <div class="movie-table-container col-9">
+      <div class="d-flex justify-content-between">
+        <button id="previous-page" class="d-none">previous</button>
+        <div id="page-text"></div>
+        <button id="next-page" class="d-none">next</button>
+      </div>
       <table class="table">
         <thead>
           <tr>
@@ -72,6 +77,11 @@
         </thead>
         <tbody id="movie-detail-rows"></tbody>
       </table>
+      <div class="d-flex justify-content-between">
+        <button id="previous2-page" class="d-none">previous</button>
+        <div id="page-text2"></div>
+        <button id="next2-page" class="d-none">next</button>
+      </div>
     </div>
   </div>
 </template>

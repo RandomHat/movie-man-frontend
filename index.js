@@ -1,7 +1,7 @@
 import { renderTemplate, setActive, showPage } from './utils.js'
 import { setupLoginHandlers, logout } from './js-for-pages/login.js'
 
-import {setupMovieHandlers, findMovies} from './js-for-pages/movie-search.js'
+import {setupMovieHandlers} from './js-for-pages/movie-search.js'
 import { addUserHandlers } from './js-for-pages/signup.js'
 
 
@@ -24,7 +24,7 @@ function renderMenues(evt) {
     }
     case 'page-movie-search':{
       setupMovieHandlers()
-    
+  
     }
   }
 }
