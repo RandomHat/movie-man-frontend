@@ -23,6 +23,7 @@ function findMovies (){
     let movieName = "query=" + document.getElementById("movie-name").value
     let page = "&page=" + currentPage
     let movieSearchURL = URL + "/search?" + movieName + page
+    hideNavigatePageBtn()
     fetch(movieSearchURL)
     .then(res => res.json())
     .then(data => {
@@ -41,10 +42,7 @@ function findMovies (){
         
         document.getElementById("movie-detail-rows").innerHTML = rows
     }).then(()=> {
-        document.getElementById("next-page").classList.remove("d-none")
-        document.getElementById("previous-page").classList.remove("d-none")
-        document.getElementById("next2-page").classList.remove("d-none")
-        document.getElementById("previous2-page").classList.remove("d-none")
+        showNavigatePageBtn()
     })
     .catch(err => console.error("error: " + err))
 
@@ -64,5 +62,19 @@ function previouspage(){
     }
     currentPage--
     findMovies()
+}
+
+function hideNavigatePageBtn(){
+    document.getElementById("next-page").classList.add("d-none")
+        document.getElementById("previous-page").classList.add("d-none")
+        document.getElementById("next2-page").classList.add("d-none")
+        document.getElementById("previous2-page").classList.add("d-none")
+}
+
+function showNavigatePageBtn(){
+        document.getElementById("next-page").classList.remove("d-none")
+        document.getElementById("previous-page").classList.remove("d-none")
+        document.getElementById("next2-page").classList.remove("d-none")
+        document.getElementById("previous2-page").classList.remove("d-none")
 }
 
