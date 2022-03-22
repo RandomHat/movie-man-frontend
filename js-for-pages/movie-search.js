@@ -4,6 +4,7 @@ import { SERVER } from '../settings.js';
 let URL = SERVER + "/api/movies"
 let currentPage = 1;
 let maxpage;
+let searchWord
 
 export function setupMovieHandlers(){
     document.getElementById("btn-movie-name").onclick = search
@@ -16,14 +17,14 @@ export function setupMovieHandlers(){
 
 function search(){
     currentPage = 1
+    searchInput()
     findMovies()
 }
 
 function findMovies (){
-    let movieName = "query=" + searchInput()
+    let movieName = "query=" + searchWord.replace(/\s/g,"+")
     let page = "&page=" + currentPage
     let movieSearchURL = URL + "/search?" + movieName + page
-    console.log(movieSearchURL)
     hideNavigatePageBtn()
     fetch(movieSearchURL)
     .then(res => res.json())
@@ -51,9 +52,7 @@ function findMovies (){
 }
 
 function searchInput(){
-    const currentSearch = document.getElementById("movie-name").value
-    console.log(currentSearch.replace(/\s/g,"+"))
-    return currentSearch.replace(/\s/g,"+")
+    searchWord = document.getElementById("movie-name").value
 }
 
 function nextpage(){
