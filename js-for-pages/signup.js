@@ -9,8 +9,8 @@ export function addUserHandlers() {
 function addUser() {
   const user = {}
 
-  user.username = document.getElementById('username').value
-  user.password = document.getElementById('password').value
+  user.username = document.getElementById('username-sign-up').value
+  user.password = document.getElementById('password-sign-up').value
 
   const options = {
     method: 'POST',

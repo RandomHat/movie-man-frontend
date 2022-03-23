@@ -1,15 +1,35 @@
 import { showPage } from '../utils.js'
+import { makeOptions } from '../fetchUtils.js'
+import { SERVER } from '../settings.js'
+
+const URL = SERVER + '/auth/login'
 
 export function setupLoginHandlers() {
   document.getElementById('btn-login').onclick = login
-  //Remove after initial demo
 }
 
 function login() {
-  //Here you have to do the REAL LOGIN upgainst the backend
-  const token = 'this simultas the token you wil get from a real login'
-  setLoginState(token, 'USER')
-  showPage('page-about')
+  const user = {}
+  user.username = document.getElementById('username').value
+  user.password = document.getElementById('password').value
+
+  fetch(URL, makeOptions('POST', user))
+    .then((res) => {
+      if (!res.ok) {
+        if (res.status == 401) {
+          return Promise.reject('Wrong usernamer or Password')
+        }
+      }
+      return res.json()
+    })
+    .then((response) => {
+      const token = response.token
+      setLoginState(token)
+      showPage('page-about')
+    })
+    .catch((e) => {
+      document.getElementById('login-error').innerText = e
+    })
 }
 
 export function logout() {
@@ -17,15 +37,11 @@ export function logout() {
   showPage('page-about')
 }
 
-export function setLoginState(token, loggedInAs) {
+export function setLoginState(token) {
   if (token) {
     sessionStorage.setItem('token', token)
-    if (loggedInAs) {
-      sessionStorage.setItem('logged-in-as', loggedInAs)
-    }
   } else {
     sessionStorage.clear('token')
-    sessionStorage.clear('logged-in-as')
   }
   updateLoginDependentComponents()
 }
