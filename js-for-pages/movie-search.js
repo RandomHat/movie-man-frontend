@@ -72,6 +72,8 @@ function previouspage(){
 }
 
 function hideNavigatePageBtn(){
+    document.getElementById("page-text").classList.add("d-none")
+    document.getElementById("page-text2").classList.add("d-none")
     document.getElementById("next-page").classList.add("d-none")
         document.getElementById("previous-page").classList.add("d-none")
         document.getElementById("next2-page").classList.add("d-none")
@@ -79,6 +81,8 @@ function hideNavigatePageBtn(){
 }
 
 function showNavigatePageBtn(){
+        document.getElementById("page-text").classList.remove("d-none")
+        document.getElementById("page-text2").classList.remove("d-none")
         document.getElementById("next-page").classList.remove("d-none")
         document.getElementById("previous-page").classList.remove("d-none")
         document.getElementById("next2-page").classList.remove("d-none")
