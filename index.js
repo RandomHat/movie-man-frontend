@@ -1,9 +1,8 @@
 import { renderTemplate, setActive, showPage } from './utils.js'
 import { setupLoginHandlers, logout } from './js-for-pages/login.js'
 
-import {setupMovieHandlers} from './js-for-pages/movie-search.js'
+import { setupMovieHandlers } from './js-for-pages/movie-search.js'
 import { addUserHandlers } from './js-for-pages/signup.js'
-
 
 function renderMenues(evt) {
   const element = evt.target
@@ -13,6 +12,7 @@ function renderMenues(evt) {
   switch (id) {
     case 'page-sign-up': {
       addUserHandlers()
+      break
     }
     case 'page-login': {
       setupLoginHandlers()
@@ -22,9 +22,9 @@ function renderMenues(evt) {
       logout()
       break
     }
-    case 'page-movie-search':{
+    case 'page-movie-search': {
       setupMovieHandlers()
-  
+      break
     }
   }
 }
