@@ -2,7 +2,7 @@ import { showPage } from '../utils.js'
 import { makeOptions } from '../fetchUtils.js'
 import { SERVER } from '../settings.js'
 
-const URL = SERVER + '/auth/login'
+const URL = SERVER + '/api/users/login'
 
 export function setupLoginHandlers() {
   document.getElementById('btn-login').onclick = login
@@ -17,14 +17,14 @@ function login() {
     .then((res) => {
       if (!res.ok) {
         if (res.status == 401) {
-          return Promise.reject('Wrong usernamer or Password')
+          return Promise.reject('Wrong Username or Password')
         }
       }
       return res.json()
     })
     .then((response) => {
-      const token = response.token
-      setLoginState(token)
+      const token = response
+      setLoginState(token, user.username)
       showPage('page-about')
     })
     .catch((e) => {
@@ -37,9 +37,13 @@ export function logout() {
   showPage('page-about')
 }
 
-export function setLoginState(token) {
+export function setLoginState(token, username) {
   if (token) {
-    sessionStorage.setItem('token', token)
+    let loginState = {}
+    loginState.loggedIn = token
+    loginState.loggedInAs = username
+    sessionStorage.setItem('token', loginState)
+    console.log(loginState)
   } else {
     sessionStorage.clear('token')
   }
