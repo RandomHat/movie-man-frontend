@@ -15,7 +15,8 @@ export function setupMovieHandlers(){
 
 }
 
-function search(){
+function search(evt){
+    evt.preventDefault()
     currentPage = 1
     searchInput()
     findMovies()
