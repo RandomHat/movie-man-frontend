@@ -53,7 +53,7 @@ export function updateLoginDependentComponents() {
   const loggedInAs = sessionStorage.getItem('username')
 
   document.getElementById('logged-in-user').style.display = loggedIn ? 'block' : 'none'
-  document.getElementById('logged-in-user').innerText = loggedInAs
+  document.getElementById('logged-in-user').innerText = 'Logged in as user: ' + loggedInAs
   document.getElementById('not-logged-in').style.display = loggedIn ? 'none' : 'block'
   document.getElementById('page-login').style.display = loggedIn ? 'none' : 'block'
   document.getElementById('page-logout').style.display = loggedIn ? 'block' : 'none'
