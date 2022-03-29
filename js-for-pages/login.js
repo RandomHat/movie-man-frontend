@@ -33,32 +33,28 @@ function login() {
 }
 
 export function logout() {
-  setLoginState(null)
+  setLoginState()
   showPage('page-about')
 }
 
 export function setLoginState(token, username) {
   if (token) {
-    let loginState = {}
-    loginState.loggedIn = token
-    loginState.loggedInAs = username
-    sessionStorage.setItem('token', loginState)
-    console.log(loginState)
+    sessionStorage.setItem('token', token)
+    sessionStorage.setItem('username', username)
   } else {
-    sessionStorage.clear('token')
+    sessionStorage.removeItem('token')
+    sessionStorage.removeItem('username')
   }
   updateLoginDependentComponents()
 }
 
 export function updateLoginDependentComponents() {
   const loggedIn = sessionStorage.getItem('token')
-  const loggedInAs = sessionStorage.getItem('logged-in-as')
-  document.getElementById('logged-in-user').style.display = 'none'
-  document.getElementById('not-logged-in').style.display = 'block'
+  const loggedInAs = sessionStorage.getItem('username')
 
-  if (loggedIn) {
-    document.getElementById('not-logged-in').style.display = 'none'
-  }
+  document.getElementById('logged-in-user').style.display = loggedIn ? 'block' : 'none'
+  document.getElementById('logged-in-user').innerText = loggedInAs
+  document.getElementById('not-logged-in').style.display = loggedIn ? 'none' : 'block'
   document.getElementById('page-login').style.display = loggedIn ? 'none' : 'block'
   document.getElementById('page-logout').style.display = loggedIn ? 'block' : 'none'
 }
